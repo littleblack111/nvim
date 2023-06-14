@@ -1,6 +1,4 @@
-require("custom.remap")
 require("custom.packer")
-require('lspconfig')
+require("custom.vim-plug")
+require("custom.lazy")
 require("custom.config")
-
-
