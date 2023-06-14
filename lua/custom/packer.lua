@@ -27,8 +27,6 @@ return require('packer').startup(function(use)
   use ('pwntester/octo.nvim')
   use ('pwntester/codeql.nvim')
   use ('ldelossa/gh.nvim')
-  use ('neovim/nvim-lspconfig')
-  use ('williamboman/nvim-lsp-installer')
   use ('hrsh7th/nvim-cmp')
   use ('hrsh7th/cmp-nvim-lsp')
   use ('EtiamNullam/deferred-clipboard.nvim')
@@ -53,6 +51,7 @@ return require('packer').startup(function(use)
 	    {'hrsh7th/nvim-cmp'},     -- Required
 	    {'hrsh7th/cmp-nvim-lsp'}, -- Required
 	    {'L3MON4D3/LuaSnip'},     -- Required
+        {'j-hui/fidget.nvim'},
 	  }
 }
   use {
@@ -74,6 +73,17 @@ return require('packer').startup(function(use)
   }
 
   use 'nvim-tree/nvim-tree.lua'
+  use({
+	"L3MON4D3/LuaSnip",
+	-- follow latest release.
+	tag = "v<CurrentMajor>.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+	-- install jsregexp (optional!:).
+	run = "make install_jsregexp"
+  })
+  use {
+    'lewis6991/gitsigns.nvim',
+    -- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
+  }
 
   --require('packer').startup(function(use)
     --use('Bekaboo/dropbar.nvim')

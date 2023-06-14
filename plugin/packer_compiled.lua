@@ -94,10 +94,20 @@ _G.packer_plugins = {
     path = "/home/system/.local/share/nvim/site/pack/packer/start/deferred-clipboard.nvim",
     url = "https://github.com/EtiamNullam/deferred-clipboard.nvim"
   },
+  ["fidget.nvim"] = {
+    loaded = true,
+    path = "/home/system/.local/share/nvim/site/pack/packer/start/fidget.nvim",
+    url = "https://github.com/j-hui/fidget.nvim"
+  },
   ["gh.nvim"] = {
     loaded = true,
     path = "/home/system/.local/share/nvim/site/pack/packer/start/gh.nvim",
     url = "https://github.com/ldelossa/gh.nvim"
+  },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/home/system/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
   },
   ["lazy.nvim"] = {
     loaded = true,
