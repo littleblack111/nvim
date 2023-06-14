@@ -28,7 +28,6 @@ return require('packer').startup(function(use)
   use ('pwntester/codeql.nvim')
   use ('ldelossa/gh.nvim')
   use ('neovim/nvim-lspconfig')
-  use ('williamboman/nvim-lsp-installer')
   use ('hrsh7th/nvim-cmp')
   use ('hrsh7th/cmp-nvim-lsp')
   use ('EtiamNullam/deferred-clipboard.nvim')
@@ -74,6 +73,9 @@ return require('packer').startup(function(use)
   }
 
   use 'nvim-tree/nvim-tree.lua'
+  use 'ranjithshegde/ccls.nvim'
+  use 'lewis6991/gitsigns.nvim'
+  use 'j-hui/fidget.nvim'
 
   --require('packer').startup(function(use)
     --use('Bekaboo/dropbar.nvim')
