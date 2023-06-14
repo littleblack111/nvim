@@ -75,7 +75,7 @@ return require('packer').startup(function(use)
   use 'nvim-tree/nvim-tree.lua'
   use 'ranjithshegde/ccls.nvim'
   use 'lewis6991/gitsigns.nvim'
-  use 'j-hui/fidget.nvim'
+  --use 'j-hui/fidget.nvim'
 
   --require('packer').startup(function(use)
     --use('Bekaboo/dropbar.nvim')
