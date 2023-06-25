@@ -14,6 +14,8 @@ Plug 'https://github.com/ryanoasis/vim-devicons'
 Plug 'https://github.com/tc50cal/vim-terminal'
 Plug 'https://github.com/preservim/tagbar'
 Plug 'https://github.com/terryma/vim-multiple-cursors'
+Plug 'rstacruz/vim-closer'
+Plug 'neoclide/coc.nvim'
 
 
 vim.call('plug#end')

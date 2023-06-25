@@ -30,7 +30,7 @@ return require('packer').startup(function(use)
   use ('neovim/nvim-lspconfig')
   use ('hrsh7th/nvim-cmp')
   use ('hrsh7th/cmp-nvim-lsp')
-  use ('EtiamNullam/deferred-clipboard.nvim')
+  --use ('EtiamNullam/deferred-clipboard.nvim')
   use ('xiyaowong/transparent.nvim')
   use ('williamboman/nvim-lsp-installer')
   --use ('tzachar/cmp-tabnine')
@@ -54,6 +54,7 @@ return require('packer').startup(function(use)
 	    {'L3MON4D3/LuaSnip'},     -- Required
 	  }
 }
+  use ( 'hrsh7th/nvim-compe' )
   use {
       "williamboman/mason.nvim",
       run = ":MasonUpdate" -- :MasonUpdate updates registry contents
@@ -73,13 +74,23 @@ return require('packer').startup(function(use)
   }
 
   use 'nvim-tree/nvim-tree.lua'
-  use 'ranjithshegde/ccls.nvim'
+  --use 'ranjithshegde/ccls.nvim'
   use 'lewis6991/gitsigns.nvim'
-  --use 'j-hui/fidget.nvim'
+  use 'jiangmiao/auto-pairs'
 
   --require('packer').startup(function(use)
     --use('Bekaboo/dropbar.nvim')
   --end)
+--  use({
+--    'glepnir/galaxyline.nvim',
+--    branch = 'main',
+--    -- your statusline
+--    config = function()
+--      require('my_statusline')
+--    end,
+--    -- some optional icons
+--    requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+--  })
 
 end)
 

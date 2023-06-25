@@ -79,10 +79,10 @@ _G.packer_plugins = {
     path = "/home/system/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  ["ccls.nvim"] = {
+  ["auto-pairs"] = {
     loaded = true,
-    path = "/home/system/.local/share/nvim/site/pack/packer/start/ccls.nvim",
-    url = "https://github.com/ranjithshegde/ccls.nvim"
+    path = "/home/system/.local/share/nvim/site/pack/packer/start/auto-pairs",
+    url = "https://github.com/jiangmiao/auto-pairs"
   },
   ["cmp-nvim-lsp"] = {
     loaded = true,
@@ -93,11 +93,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/system/.local/share/nvim/site/pack/packer/start/codeql.nvim",
     url = "https://github.com/pwntester/codeql.nvim"
-  },
-  ["deferred-clipboard.nvim"] = {
-    loaded = true,
-    path = "/home/system/.local/share/nvim/site/pack/packer/start/deferred-clipboard.nvim",
-    url = "https://github.com/EtiamNullam/deferred-clipboard.nvim"
   },
   ["gh.nvim"] = {
     loaded = true,
@@ -138,6 +133,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/system/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
+  },
+  ["nvim-compe"] = {
+    loaded = true,
+    path = "/home/system/.local/share/nvim/site/pack/packer/start/nvim-compe",
+    url = "https://github.com/hrsh7th/nvim-compe"
   },
   ["nvim-lsp-installer"] = {
     loaded = true,
