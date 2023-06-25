@@ -9,7 +9,6 @@ lsp.ensure_installed({
     'clangd',
 })
 
-
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 

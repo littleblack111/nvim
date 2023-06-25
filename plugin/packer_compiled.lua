@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/system/.local/share/nvim/site/pack/packer/start/auto-pairs",
     url = "https://github.com/jiangmiao/auto-pairs"
   },
+  ["breadcrumb.nvim"] = {
+    loaded = true,
+    path = "/home/system/.local/share/nvim/site/pack/packer/start/breadcrumb.nvim",
+    url = "https://github.com/loctvl842/breadcrumb.nvim"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/system/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
@@ -103,6 +108,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/system/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
+  ["hlargs.nvim"] = {
+    loaded = true,
+    path = "/home/system/.local/share/nvim/site/pack/packer/start/hlargs.nvim",
+    url = "https://github.com/m-demare/hlargs.nvim"
   },
   ["lazy.nvim"] = {
     loaded = true,
@@ -149,6 +159,11 @@ _G.packer_plugins = {
     path = "/home/system/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-navic"] = {
+    loaded = true,
+    path = "/home/system/.local/share/nvim/site/pack/packer/start/nvim-navic",
+    url = "https://github.com/SmiteshP/nvim-navic"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/system/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
@@ -170,9 +185,8 @@ _G.packer_plugins = {
     url = "https://github.com/RRethy/nvim-treesitter-textsubjects"
   },
   ["nvim-web-devicons"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/system/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
+    loaded = true,
+    path = "/home/system/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["octo.nvim"] = {
@@ -194,6 +208,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/system/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["scope.nvim"] = {
+    loaded = true,
+    path = "/home/system/.local/share/nvim/site/pack/packer/start/scope.nvim",
+    url = "https://github.com/tiagovla/scope.nvim"
   },
   ["tabnine-nvim"] = {
     loaded = true,
@@ -229,6 +248,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/system/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-illuminate"] = {
+    loaded = true,
+    path = "/home/system/.local/share/nvim/site/pack/packer/start/vim-illuminate",
+    url = "https://github.com/RRethy/vim-illuminate"
   }
 }
 
