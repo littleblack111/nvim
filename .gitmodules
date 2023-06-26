@@ -22,3 +22,6 @@
 [submodule "plugged/vim-multiple-cursors"]
 	path = plugged/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors
+[submodule "plugged/vim-surround"]
+	path = plugged/vim-surround
+	url = https://github.com/tpope/vim-surround
