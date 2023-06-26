@@ -16,3 +16,6 @@
 [submodule "plugged/vim-css-color"]
 	path = plugged/vim-css-color
 	url = https://github.com/ap/vim-css-color
+[submodule "plugged/vim-devicons"]
+	path = plugged/vim-devicons
+	url = https://github.com/ryanoasis/vim-devicons
