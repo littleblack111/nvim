@@ -13,3 +13,6 @@
 [submodule "plugged/vim-commentary"]
 	path = plugged/vim-commentary
 	url = https://github.com/tpope/vim-commentary
+[submodule "plugged/vim-css-color"]
+	path = plugged/vim-css-color
+	url = https://github.com/ap/vim-css-color
