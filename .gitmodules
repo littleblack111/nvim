@@ -1,3 +1,6 @@
 [submodule "plugged/awesome-vim-colorschemes"]
 	path = plugged/awesome-vim-colorschemes
 	url = https://github.com/rafi/awesome-vim-colorschemes
+[submodule "plugged/pgsql.vim"]
+	path = plugged/pgsql.vim
+	url = https://github.com/lifepillar/pgsql.vim
