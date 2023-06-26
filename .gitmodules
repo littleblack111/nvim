@@ -7,3 +7,6 @@
 [submodule "plugged/tagbar"]
 	path = plugged/tagbar
 	url = https://github.com/preservim/tagbar
+[submodule "plugged/vim-closer"]
+	path = plugged/vim-closer
+	url = https://github.com/rstacruz/vim-closer
