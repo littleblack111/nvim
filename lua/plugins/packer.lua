@@ -33,7 +33,9 @@ return require('packer').startup(function(use)
 	    {'hrsh7th/cmp-nvim-lsp'}, -- Required
 	    {'L3MON4D3/LuaSnip'},     -- Required
 	  }
-}
+  }
+  use { 'jose-elias-alvarez/null-ls.nvim' }
+  use { 'ojroques/nvim-lspfuzzy' }
     use {
       'folke/lazy.nvim',
       lazy = true,
