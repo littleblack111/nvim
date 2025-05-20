@@ -1,34 +1,26 @@
--- Get the default lspconfig setup but disable any tab key bindings
 local nvchad_lsp = require("nvchad.configs.lspconfig")
 local lspconfig = require("lspconfig")
 
--- Save original defaults
+-- LSP tab key handling
 local original_on_attach = nvchad_lsp.on_attach
 
--- Override the on_attach to disable tab mappings for LSP but allow for AI completions
 nvchad_lsp.on_attach = function(client, bufnr)
-  -- Call the original on_attach
   if original_on_attach then
     original_on_attach(client, bufnr)
   end
   
-  -- Remove any Tab mappings from LSP specifically
-  -- But this won't interfere with AI completions
   pcall(vim.keymap.del, "i", "<Tab>", { buffer = bufnr })
   pcall(vim.keymap.del, "n", "<Tab>", { buffer = bufnr })
 end
-
--- Apply the custom defaults
 nvchad_lsp.defaults()
 
--- Add LSP servers to be automatically set up when installed
+-- Server setup
+nvchad_lsp.defaults()
+
 local servers = { 
   "html", "cssls", "pyright", 
   "clangd", "gopls", "jsonls", "yamlls", "lua_ls"
-  -- Note: tsserver is NOT deprecated - it's the proper name in lspconfig for the typescript-language-server
 }
-
--- Configure each server
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup({
     on_attach = nvchad_lsp.on_attach,
@@ -36,8 +28,7 @@ for _, lsp in ipairs(servers) do
   })
 end
 
--- Setup TypeScript language server using ts_ls
--- As per nvim-lspconfig, ts_ls is the newer implementation using typescript-language-server
+-- TypeScript language server
 lspconfig.ts_ls.setup({
   on_attach = nvchad_lsp.on_attach,
   capabilities = nvchad_lsp.capabilities,
@@ -51,7 +42,6 @@ lspconfig.ts_ls.setup({
     'typescriptreact',
     'typescript.tsx',
   },
-  -- Add custom settings here
   settings = {
     typescript = {
       inlayHints = {
@@ -78,7 +68,7 @@ lspconfig.ts_ls.setup({
   }
 })
 
--- Special configuration for lua_ls
+-- Lua language server
 lspconfig.lua_ls.setup({
   on_attach = nvchad_lsp.on_attach,
   capabilities = nvchad_lsp.capabilities,

@@ -1,55 +1,30 @@
---
--- AstroNvim/LunarVim style CMP organization
--- This file handles all the nvim-cmp and LuaSnip configuration
---
-
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
--- Safely require icons with better error handling
 local icons = {}
 do
-  -- Use pcall to safely require the icons module
   local status_ok, icons_module = pcall(require, "configs.icons")
   if status_ok and icons_module and type(icons_module) == "table" and icons_module.kinds then
     icons = icons_module.kinds
   else
-    -- Fallback icons if the module fails to load
     icons = {
-      Text = "  ",
-      Method = "  ",
-      Function = "  ",
-  Constructor = "  ",
-  Field = "  ",
-  Variable = "  ",
-  Class = "  ",
-  Interface = "  ",
-  Module = "  ",
-  Property = "  ",
-  Unit = "  ",
-  Value = "  ",
-  Enum = "  ",
-  Keyword = "  ",
-  Snippet = "  ",
-  Color = "  ",
-  File = "  ",
-  Reference = "  ",
-  Folder = "  ",
-  EnumMember = "  ",
-  Constant = "  ",
-  Struct = "  ",
-  Event = "  ",
-  Operator = "  ",
-  TypeParameter = "  ",
+      Text = "  ", Method = "  ", Function = "  ",
+      Constructor = "  ", Field = "  ", Variable = "  ",
+      Class = "  ", Interface = "  ", Module = "  ",
+      Property = "  ", Unit = "  ", Value = "  ",
+      Enum = "  ", Keyword = "  ", Snippet = "  ",
+      Color = "  ", File = "  ", Reference = "  ",
+      Folder = "  ", EnumMember = "  ", Constant = "  ",
+      Struct = "  ", Event = "  ", Operator = "  ",
+      TypeParameter = "  ",
     }
   end
 end
 
--- ╭──────────────────────────────────────────────────────────╮
--- │ Utility Functions                                        │
--- ╰──────────────────────────────────────────────────────────╯
 
--- Check if we can jump in the snippet
+
+
+
 local function jumpable(dir)
   local win_get_cursor = vim.api.nvim_win_get_cursor
   local get_current_buf = vim.api.nvim_get_current_buf
@@ -84,91 +59,90 @@ local function jumpable(dir)
   return false
 end
 
--- Check if Copilot has a suggestion
 local function has_copilot_suggestion()
-  -- Check if copilot.vim is loaded
   local exists = vim.fn.exists('*copilot#GetDisplayedSuggestion') == 1
   if not exists then return false end
-  
-  -- Get the displayed suggestion
+
   local suggestion = vim.fn["copilot#GetDisplayedSuggestion"]()
-  
-  -- Check if there's actual suggestion text
+
   return suggestion and suggestion.text and suggestion.text ~= ""
 end
 
 local M = {}
 
--- ╭──────────────────────────────────────────────────────────╮
--- │ Source Configuration                                     │
--- ╰──────────────────────────────────────────────────────────╯
-
 M.cmp = {
-  -- Prioritize sources: LSP first, then snippets, buffer, path
+
   sources = cmp.config.sources({
-    { 
-      name = "nvim_lsp", 
+    {
+      name = "nvim_lsp",
       priority = 1000,
-      -- Filter to allow Copilot to take precedence if needed
-      entry_filter = function(entry, ctx)
-        if has_copilot_suggestion() then
-          return false
-        end
-        return true
-      end
+      entry_filter = function()
+        return true  -- Always show LSP suggestions regardless of other plugins
+      end,
+      group_index = 1
     },
-    { name = "luasnip", priority = 750 },
-    { name = "buffer", priority = 500 },
-    { name = "path", priority = 250 },
+    { name = "luasnip", priority = 750, group_index = 1 },
+    { name = "buffer", priority = 500, group_index = 2 },
+    { name = "path", priority = 250, group_index = 2 },
   }),
-  
-  -- ╭──────────────────────────────────────────────────────────╮
-  -- │ Formatting                                               │
-  -- ╰──────────────────────────────────────────────────────────╯
+
+
+
+
   formatting = {
     format = function(entry, vim_item)
-      -- Set icons for completion items
       if icons[vim_item.kind] then
         vim_item.kind = string.format('%s %s', icons[vim_item.kind], vim_item.kind)
       end
-      
-      -- Show source name in completion menu
+
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
         luasnip = "[Snippet]",
         buffer = "[Buffer]",
         path = "[Path]",
       })[entry.source.name]
-      
+
       return vim_item
     end,
   },
-  
-  -- ╭──────────────────────────────────────────────────────────╮
-  -- │ Key Mappings                                             │
-  -- ╰──────────────────────────────────────────────────────────╯
+
+
+
+
   mapping = cmp.mapping.preset.insert({
-    -- Accept suggestion with Ctrl-y
-    ["<C-y>"] = cmp.mapping.confirm({ 
-      behavior = cmp.ConfirmBehavior.Replace, -- Use Replace to keep original text
-      select = false -- Only confirm if explicitly selected
+    ["<C-y>"] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Insert,
+      select = false
     }),
-    ["<CR>"] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace, -- Use Replace to keep original text
-      select = false -- Only confirm if explicitly selected
-    }),
-    
-    -- Navigation
+
+
     ["<C-j>"] = cmp.mapping.select_next_item(),
     ["<C-k>"] = cmp.mapping.select_prev_item(),
     ["<C-n>"] = cmp.mapping.select_next_item(),
     ["<C-p>"] = cmp.mapping.select_prev_item(),
-    
-    -- Control
+
+
     ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-e>"] = cmp.mapping.abort(),
+    ["<C-l>"] = cmp.mapping(function()
+      -- Explicitly open completion menu with LSP suggestions
+      cmp.complete({
+        config = {
+          sources = {
+            { name = 'nvim_lsp' }
+          }
+        }
+      })
+    end),
     
-    -- Snippet navigation
+    -- Shortcut to force trigger LSP completion when inconsistent
+    ["<C-x><C-o>"] = cmp.mapping(function()
+      if vim.fn.pumvisible() == 0 then
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-x><C-o>', true, true, true), 'n', true)
+      end
+    end),
+    ["<C-e>"] = cmp.mapping.abort(),
+
+
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if jumpable(-1) then
         luasnip.jump(-1)
@@ -176,8 +150,8 @@ M.cmp = {
         fallback()
       end
     end, { "i", "s" }),
-    
-    -- Use Ctrl+f for next snippet placeholder as in LunarVim
+
+
     ["<C-f>"] = cmp.mapping(function(fallback)
       if luasnip.expand_or_locally_jumpable() then
         luasnip.jump(1)
@@ -185,33 +159,32 @@ M.cmp = {
         fallback()
       end
     end, { "i", "s" }),
-    
-    -- Tab key behavior (for Copilot/AI integration)
+
+
     ["<Tab>"] = cmp.mapping(function(fallback)
+      -- First check if Copilot has a suggestion
       if has_copilot_suggestion() then
-        -- Accept Copilot suggestion directly using the Accept function
-        -- This is the correct way to accept Copilot suggestions
         vim.api.nvim_feedkeys(
           vim.fn['copilot#Accept'](''),
-          'n', 
+          'n',
           true
         )
+      -- Then check if cmp (including LSP) has a menu visible
       elseif cmp.visible() then
-        -- If completion menu is visible, select next item
         cmp.select_next_item()
+      -- Then try snippets
       elseif luasnip.expand_or_locally_jumpable() then
-        -- If we're in a snippet, jump to next position
         luasnip.expand_or_jump()
+      -- Fall back to default behavior
       else
-        -- Otherwise fall back to normal Tab behavior
         fallback()
       end
     end, { "i", "s" }),
   }),
-  
-  -- ╭──────────────────────────────────────────────────────────╮
-  -- │ Window Appearance                                        │
-  -- ╰──────────────────────────────────────────────────────────╯
+
+
+
+
   window = {
     completion = cmp.config.window.bordered({
       winhighlight = "Normal:CmpNormal,FloatBorder:CmpBorder,CursorLine:CmpSel,Search:None",
@@ -220,32 +193,23 @@ M.cmp = {
       winhighlight = "Normal:CmpDocNormal,FloatBorder:CmpDocBorder,CursorLine:CmpDocSel,Search:None",
     }),
   },
-  
-  -- ╭──────────────────────────────────────────────────────────╮
-  -- │ Snippet Handling                                         │
-  -- ╰──────────────────────────────────────────────────────────╯
+
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
   },
-  
-  -- ╭──────────────────────────────────────────────────────────╮
-  -- │ Completion Behavior                                      │
-  -- ╰──────────────────────────────────────────────────────────╯
+
   completion = {
-    completeopt = "menu,menuone,noinsert", -- Avoid replacing text on completion
+    completeopt = "menu,menuone,noinsert",
   },
-  
-  -- ╭──────────────────────────────────────────────────────────╮
-  -- │ Experimental Features                                    │
-  -- ╰──────────────────────────────────────────────────────────╯
+
   experimental = {
-    ghost_text = false, -- Disable ghost text as it can interfere with Copilot
+    ghost_text = false,
   },
 }
 
--- Disable up/down arrow keys to prevent breaking expected navigation behavior
+
 M.cmp.mapping["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select })
 M.cmp.mapping["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select })
 

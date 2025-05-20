@@ -9,21 +9,20 @@ o.ignorecase = true
 o.smartcase = true
 o.relativenumber = true
 o.clipboard = "unnamedplus"
-o.expandtab = false       -- Don't expand tabs to spaces
+o.expandtab = false
 o.timeoutlen = 100
 o.linebreak = true
 o.swapfile = false
-o.softtabstop = 0        -- Disable soft tabs to ensure Tab inserts a real tab
-o.smarttab = false       -- Disable smart tab behavior but allow AI completions
+o.softtabstop = 0
+o.smarttab = false
 
 g.lsp_document_highlight_enable = true
 g.lsp_inlay_hint_enable = true
 g.lsp_codelens_enable = false
 g.lsp_refresh_time = 1000
 
--- Enable syntax highlighting
-vim.cmd('syntax enable')
-vim.cmd('syntax on')
+o.syntax = "on"
+o.termguicolors = true
 
--- Ensure proper highlighting with Treesitter
-o.termguicolors = true     -- Enable 24-bit RGB color in the TUI
+vim.o.scrolloff = 5
+vim.o.sidescrolloff = 5

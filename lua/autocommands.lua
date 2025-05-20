@@ -1,4 +1,3 @@
-
 -- Remember last position in file
 vim.api.nvim_create_autocmd("BufReadPost", {
     callback = function(args)
@@ -18,23 +17,5 @@ vim.api.nvim_create_autocmd("BufEnter", {
         if #vim.api.nvim_list_wins() == 1 and require("nvim-tree.utils").is_nvim_tree_buf() then
             vim.cmd("confirm quit")
         end
-    end,
-})
-
--- Ensure Treesitter highlighting is applied
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-    pattern = {"*"},
-    callback = function()
-        if vim.bo.filetype ~= "" then
-            vim.cmd("TSEnable highlight")
-        end
-    end,
-})
-
--- Force full syntax highlighting refresh for specific filetypes
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter", "BufRead", "BufNewFile"}, {
-    pattern = {"*.cpp", "*.hpp", "*.c", "*.h", "*.js", "*.ts", "*.jsx", "*.tsx"},
-    callback = function()
-        vim.cmd("syntax sync fromstart")
     end,
 })
