@@ -1,15 +1,7 @@
 require "nvchad.mappings"
 
 local map = vim.keymap.set
-local unmap = vim.keymap.del
-
-local default_mappings_to_disable = {
-  { mode = "n", key = "<Tab>" },
-  { mode = "i", key = "<Tab>" }
-}
-for _, mapping in ipairs(default_mappings_to_disable) do
-  pcall(unmap, mapping.mode, mapping.key)
-end
+-- local unmap = vim.keymap.del
 
 map("n", "<leader>q", "<cmd>confirm q<CR>", { desc = "Quit with confirmation" })
 map("n", "<leader>w", "<cmd>w<cr>", { desc = "Save" })
@@ -49,7 +41,7 @@ map("n", "<leader>8", function() safe_goto_buf(8) end, { desc = "Go to buffer 8"
 map("n", "<leader>9", function() safe_goto_buf(9) end, { desc = "Go to buffer 9" })
 map("n", "<leader>0", function() safe_goto_buf(10) end, { desc = "Go to buffer 10" })
 
-map("n", "<leader>c", function() 
+map("n", "<leader>c", function()
   pcall(function()
     tabufline.close_buffer()
   end)

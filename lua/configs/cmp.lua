@@ -122,9 +122,7 @@ M.cmp = {
     ["<C-p>"] = cmp.mapping.select_prev_item(),
 
 
-    ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-l>"] = cmp.mapping(function()
-      -- Explicitly open completion menu with LSP suggestions
       cmp.complete({
         config = {
           sources = {
@@ -133,22 +131,9 @@ M.cmp = {
         }
       })
     end),
-    
-    -- Shortcut to force trigger LSP completion when inconsistent
-    ["<C-x><C-o>"] = cmp.mapping(function()
-      if vim.fn.pumvisible() == 0 then
-        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-x><C-o>', true, true, true), 'n', true)
-      end
-    end),
     ["<C-e>"] = cmp.mapping.abort(),
-
-
     ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if jumpable(-1) then
-        luasnip.jump(-1)
-      else
         fallback()
-      end
     end, { "i", "s" }),
 
 
@@ -162,28 +147,20 @@ M.cmp = {
 
 
     ["<Tab>"] = cmp.mapping(function(fallback)
-      -- First check if Copilot has a suggestion
       if has_copilot_suggestion() then
         vim.api.nvim_feedkeys(
           vim.fn['copilot#Accept'](''),
           'n',
           true
         )
-      -- Then check if cmp (including LSP) has a menu visible
-      elseif cmp.visible() then
-        cmp.select_next_item()
-      -- Then try snippets
-      elseif luasnip.expand_or_locally_jumpable() then
-        luasnip.expand_or_jump()
-      -- Fall back to default behavior
-      else
+	  else
         fallback()
       end
     end, { "i", "s" }),
+    ["<CR>"] = cmp.mapping(function(fallback)
+        fallback()
+    end, { "i", "s" }),
   }),
-
-
-
 
   window = {
     completion = cmp.config.window.bordered({
