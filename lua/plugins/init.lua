@@ -31,6 +31,7 @@ return {
   { import = "plugins.treesitter" },        -- TreeSitter must be loaded early
   { import = "plugins.luasnip" },          -- Load LuaSnip and nvim-cmp configuration
   { import = "plugins.mason" },            -- LSP server management
+  { import = "plugins.dap" },              -- Debug Adapter Protocol
   { import = "plugins.copilot" },
   { import = "plugins.code_runner" },
   { import = "plugins.wakatime" },
@@ -47,4 +48,5 @@ return {
   { import = "plugins.better-escape" },
   { import = "plugins.kitty-scrollback" },
   { import = "plugins.inlay-hints" },
+  { import = "plugins.lsp_lines" },
 }

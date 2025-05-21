@@ -8,7 +8,7 @@ nvchad_lsp.on_attach = function(client, bufnr)
   if original_on_attach then
     original_on_attach(client, bufnr)
   end
-  
+
   pcall(vim.keymap.del, "i", "<Tab>", { buffer = bufnr })
   pcall(vim.keymap.del, "n", "<Tab>", { buffer = bufnr })
 end
@@ -17,8 +17,8 @@ nvchad_lsp.defaults()
 -- Server setup
 nvchad_lsp.defaults()
 
-local servers = { 
-  "html", "cssls", "pyright", 
+local servers = {
+  "html", "cssls", "pyright",
   "clangd", "gopls", "jsonls", "yamlls", "lua_ls"
 }
 for _, lsp in ipairs(servers) do
@@ -68,7 +68,6 @@ lspconfig.ts_ls.setup({
   }
 })
 
--- Lua language server
 lspconfig.lua_ls.setup({
   on_attach = nvchad_lsp.on_attach,
   capabilities = nvchad_lsp.capabilities,
@@ -91,7 +90,6 @@ lspconfig.lua_ls.setup({
   },
 })
 
--- Setup lsp_signature on LSP attach
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		local bufnr = args.buf
@@ -102,5 +100,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			},
 			hint_enable = true,
 		}, bufnr)
+		 require("lsp_lines").setup()
 	end,
-}) 
+})
