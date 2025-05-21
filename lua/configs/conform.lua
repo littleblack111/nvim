@@ -1,15 +1,20 @@
 local options = {
-  formatters_by_ft = {
-    lua = { "stylua" },
-    -- css = { "prettier" },
-    -- html = { "prettier" },
+  format_on_save = {
+    timeout_ms = 500,
+    lsp_fallback = true,
   },
-
-  -- format_on_save = {
-  --   -- These options will be passed to conform.format()
-  --   timeout_ms = 500,
-  --   lsp_fallback = true,
-  -- },
+  
+  formatters = {
+    shfmt = {
+      prepend_args = { "-i", "2", "-ci" }
+    },
+  },
+  
+  format_after_save = {
+    lsp_fallback = true,
+  },
+  
+  log_level = vim.log.levels.INFO,
 }
 
 return options

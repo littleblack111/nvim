@@ -7,7 +7,7 @@ return {
         "lua-language-server",
         "html-lsp",
         "css-lsp",
-        "typescript-language-server", -- Default Mason package name
+        "typescript-language-server",
         "pyright",
         "clangd",
         "gopls",
@@ -17,7 +17,16 @@ return {
         -- Formatters
         "stylua",
         "prettier",
+        "prettierd",
         "clang-format",
+        "black",
+        "isort",
+        "gofmt",
+        "goimports",
+        "google-java-format",
+        "shfmt",
+        "rustfmt",
+        "clang_format",
         
         -- Linters
         "eslint_d",
@@ -26,7 +35,6 @@ return {
     config = function(_, opts)
       require("mason").setup(opts)
       
-      -- Ensure the servers are installed
       local ensure_installed = opts.ensure_installed or {}
       local registry = require("mason-registry")
       
@@ -47,7 +55,7 @@ return {
         "lua_ls",
         "html",
         "cssls",
-        "tsserver", -- Correct name in mason-lspconfig is tsserver
+        "tsserver",
         "pyright", 
         "clangd",
         "gopls",

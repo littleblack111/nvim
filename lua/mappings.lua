@@ -17,6 +17,7 @@ map("n", "<leader>sr", "<cmd>'<,'>SnipRun<CR>", { desc = "Snip Run" })
 map("n", "<leader>nn", "<cmd>Noice dismiss<CR>", { desc = "Dismiss Notifications" })
 map("n", "<leader>,", "<cmd>lua vim.lsp.buf.code_action()<CR>", { desc = "Code Action" })
 map("i", "<C-BS>", "<C-w>", { desc = "Delete Word" })
+map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", { desc = "References" })
 
 -- Buffer navigation
 local tabufline = require("nvchad.tabufline")

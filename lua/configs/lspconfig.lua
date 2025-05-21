@@ -9,8 +9,6 @@ nvchad_lsp.on_attach = function(client, bufnr)
     original_on_attach(client, bufnr)
   end
 
-  pcall(vim.keymap.del, "i", "<Tab>", { buffer = bufnr })
-  pcall(vim.keymap.del, "n", "<Tab>", { buffer = bufnr })
 end
 nvchad_lsp.defaults()
 
