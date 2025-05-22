@@ -1,5 +1,5 @@
-local cmp = require("cmp")
-local luasnip = require("luasnip")
+local cmp = require "cmp"
+local luasnip = require "luasnip"
 
 local icons = {}
 do
@@ -8,22 +8,34 @@ do
     icons = icons_module.kinds
   else
     icons = {
-      Text = "  ", Method = "  ", Function = "  ",
-      Constructor = "  ", Field = "  ", Variable = "  ",
-      Class = "  ", Interface = "  ", Module = "  ",
-      Property = "  ", Unit = "  ", Value = "  ",
-      Enum = "  ", Keyword = "  ", Snippet = "  ",
-      Color = "  ", File = "  ", Reference = "  ",
-      Folder = "  ", EnumMember = "  ", Constant = "  ",
-      Struct = "  ", Event = "  ", Operator = "  ",
+      Text = "  ",
+      Method = "  ",
+      Function = "  ",
+      Constructor = "  ",
+      Field = "  ",
+      Variable = "  ",
+      Class = "  ",
+      Interface = "  ",
+      Module = "  ",
+      Property = "  ",
+      Unit = "  ",
+      Value = "  ",
+      Enum = "  ",
+      Keyword = "  ",
+      Snippet = "  ",
+      Color = "  ",
+      File = "  ",
+      Reference = "  ",
+      Folder = "  ",
+      EnumMember = "  ",
+      Constant = "  ",
+      Struct = "  ",
+      Event = "  ",
+      Operator = "  ",
       TypeParameter = "  ",
     }
   end
 end
-
-
-
-
 
 local function jumpable(dir)
   local win_get_cursor = vim.api.nvim_win_get_cursor
@@ -60,8 +72,10 @@ local function jumpable(dir)
 end
 
 local function has_copilot_suggestion()
-  local exists = vim.fn.exists('*copilot#GetDisplayedSuggestion') == 1
-  if not exists then return false end
+  local exists = vim.fn.exists "*copilot#GetDisplayedSuggestion" == 1
+  if not exists then
+    return false
+  end
 
   local suggestion = vim.fn["copilot#GetDisplayedSuggestion"]()
 
@@ -72,27 +86,24 @@ local M = {}
 
 M.cmp = {
 
-  sources = cmp.config.sources({
+  sources = cmp.config.sources {
     {
       name = "nvim_lsp",
       priority = 1000,
       entry_filter = function()
-        return true  -- Always show LSP suggestions regardless of other plugins
+        return true -- Always show LSP suggestions regardless of other plugins
       end,
-      group_index = 1
+      group_index = 1,
     },
     { name = "luasnip", priority = 750, group_index = 1 },
     { name = "buffer", priority = 500, group_index = 2 },
     { name = "path", priority = 250, group_index = 2 },
-  }),
-
-
-
+  },
 
   formatting = {
     format = function(entry, vim_item)
       if icons[vim_item.kind] then
-        vim_item.kind = string.format('%s %s', icons[vim_item.kind], vim_item.kind)
+        vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
       end
 
       vim_item.menu = ({
@@ -106,36 +117,30 @@ M.cmp = {
     end,
   },
 
-
-
-
-  mapping = cmp.mapping.preset.insert({
-    ["<C-y>"] = cmp.mapping.confirm({
+  mapping = cmp.mapping.preset.insert {
+    ["<C-y>"] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Insert,
-      select = false
-    }),
-
+      select = false,
+    },
 
     ["<C-j>"] = cmp.mapping.select_next_item(),
     ["<C-k>"] = cmp.mapping.select_prev_item(),
     ["<C-n>"] = cmp.mapping.select_next_item(),
     ["<C-p>"] = cmp.mapping.select_prev_item(),
 
-
     ["<C-l>"] = cmp.mapping(function()
-      cmp.complete({
+      cmp.complete {
         config = {
           sources = {
-            { name = 'nvim_lsp' }
-          }
-        }
-      })
+            { name = "nvim_lsp" },
+          },
+        },
+      }
     end),
     ["<C-e>"] = cmp.mapping.abort(),
     ["<S-Tab>"] = cmp.mapping(function(fallback)
-        fallback()
+      fallback()
     end, { "i", "s" }),
-
 
     ["<C-f>"] = cmp.mapping(function(fallback)
       if luasnip.expand_or_locally_jumpable() then
@@ -145,30 +150,21 @@ M.cmp = {
       end
     end, { "i", "s" }),
 
-
     ["<Tab>"] = cmp.mapping(function(fallback)
-      if has_copilot_suggestion() then
-        vim.api.nvim_feedkeys(
-          vim.fn['copilot#Accept'](''),
-          'n',
-          true
-        )
-	  else
-        fallback()
-      end
+      fallback()
     end, { "i", "s" }),
     ["<CR>"] = cmp.mapping(function(fallback)
-        fallback()
+      fallback()
     end, { "i", "s" }),
-  }),
+  },
 
   window = {
-    completion = cmp.config.window.bordered({
+    completion = cmp.config.window.bordered {
       winhighlight = "Normal:CmpNormal,FloatBorder:CmpBorder,CursorLine:CmpSel,Search:None",
-    }),
-    documentation = cmp.config.window.bordered({
+    },
+    documentation = cmp.config.window.bordered {
       winhighlight = "Normal:CmpDocNormal,FloatBorder:CmpDocBorder,CursorLine:CmpDocSel,Search:None",
-    }),
+    },
   },
 
   snippet = {
@@ -186,8 +182,7 @@ M.cmp = {
   },
 }
 
-
-M.cmp.mapping["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select })
-M.cmp.mapping["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+M.cmp.mapping["<Down>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select }
+M.cmp.mapping["<Up>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select }
 
 return M
