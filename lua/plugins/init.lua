@@ -17,9 +17,9 @@ return {
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",  -- LSP completion source
-      "hrsh7th/cmp-buffer",    -- Buffer completion source
-      "hrsh7th/cmp-path",      -- Path completion source
+      "hrsh7th/cmp-nvim-lsp", -- LSP completion source
+      "hrsh7th/cmp-buffer", -- Buffer completion source
+      "hrsh7th/cmp-path", -- Path completion source
       "saadparwaiz1/cmp_luasnip", -- Snippet completion source
     },
     opts = require("configs.cmp").cmp,
@@ -27,11 +27,11 @@ return {
 
   -- Import all plugin modules
   { import = "plugins.transparent" },
-  { import = "plugins.syntax-highlight" },  -- Add syntax highlighting enhancements
-  { import = "plugins.treesitter" },        -- TreeSitter must be loaded early
-  { import = "plugins.luasnip" },          -- Load LuaSnip and nvim-cmp configuration
-  { import = "plugins.mason" },            -- LSP server management
-  { import = "plugins.dap" },              -- Debug Adapter Protocol
+  { import = "plugins.syntax-highlight" }, -- Add syntax highlighting enhancements
+  { import = "plugins.treesitter" }, -- TreeSitter must be loaded early
+  { import = "plugins.luasnip" }, -- Load LuaSnip and nvim-cmp configuration
+  { import = "plugins.mason" }, -- LSP server management
+  { import = "plugins.dap" }, -- Debug Adapter Protocol
   { import = "plugins.copilot" },
   { import = "plugins.code_runner" },
   { import = "plugins.wakatime" },

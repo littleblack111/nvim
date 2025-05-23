@@ -5,8 +5,8 @@ return {
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "TSInstall", "TSUpdate", "TSBufEnable", "TSBufDisable", "TSEnable", "TSDisable", "TSModuleInfo" },
-    dependencies = { 
-      "nvim-treesitter/nvim-treesitter-textobjects" 
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-textobjects",
     },
     config = function()
       -- Create custom highlight links to improve variable and function highlighting
@@ -37,31 +37,39 @@ return {
         vim.api.nvim_set_hl(0, group, setting)
       end
 
-      require("nvim-treesitter.configs").setup({
+      require("nvim-treesitter.configs").setup {
         ensure_installed = {
           -- Base languages
-          "vim", "lua", "vimdoc",
+          "vim",
+          "lua",
+          "vimdoc",
           -- Web development
-          "javascript", "typescript", "html", "css",
+          "javascript",
+          "typescript",
+          "html",
+          "css",
           -- Common programming languages
-          "c", "cpp", "python", 
+          "c",
+          "cpp",
+          "python",
           -- Web formats
-          "json", "yaml",
+          "json",
+          "yaml",
         },
         sync_install = false,
         auto_install = true,
         ignore_install = {},
-        
+
         highlight = {
           enable = true,
           disable = {},
           additional_vim_regex_highlighting = false,
         },
-        
-        indent = { 
+
+        indent = {
           enable = true,
         },
-        
+
         -- Improved selection based on syntax nodes
         incremental_selection = {
           enable = true,
@@ -72,7 +80,7 @@ return {
             node_decremental = "grm",
           },
         },
-        
+
         -- Enhanced textobjects based on syntax nodes
         textobjects = {
           select = {
@@ -100,12 +108,12 @@ return {
             },
           },
         },
-      })
+      }
     end,
   },
-  
+
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     lazy = true,
-  }
+  },
 }

@@ -13,7 +13,7 @@ return {
         "gopls",
         "json-lsp",
         "yaml-language-server",
-        
+
         -- Formatters
         "stylua",
         "prettier",
@@ -27,17 +27,17 @@ return {
         "shfmt",
         "rustfmt",
         "clang_format",
-        
+
         -- Linters
         "eslint_d",
       },
     },
     config = function(_, opts)
       require("mason").setup(opts)
-      
+
       local ensure_installed = opts.ensure_installed or {}
-      local registry = require("mason-registry")
-      
+      local registry = require "mason-registry"
+
       for _, tool in ipairs(ensure_installed) do
         if not registry.is_installed(tool) then
           local pkg = registry.get_package(tool)
@@ -56,7 +56,7 @@ return {
         "html",
         "cssls",
         "tsserver",
-        "pyright", 
+        "pyright",
         "clangd",
         "gopls",
         "jsonls",
@@ -69,3 +69,4 @@ return {
     end,
   },
 }
+

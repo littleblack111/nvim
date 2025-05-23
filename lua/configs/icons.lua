@@ -29,7 +29,7 @@ return {
     Operator = "  ",
     TypeParameter = "  ",
   },
-  
+
   -- Git status icons
   git = {
     added = "✓",
@@ -42,12 +42,13 @@ return {
     staged = "✓",
     conflict = "✘",
   },
-  
-  -- Diagnostic icons  
+
+  -- Diagnostic icons
   diagnostics = {
     error = " ",
-    warn = " ", 
+    warn = " ",
     info = " ",
     hint = " ",
   },
 }
+

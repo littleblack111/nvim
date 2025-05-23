@@ -3,7 +3,7 @@ return {
   lazy = false,
   priority = 1000,
   config = function()
-    require("transparent").setup({
+    require("transparent").setup {
       groups = {
         "Normal",
         "NormalNC",
@@ -33,6 +33,6 @@ return {
         "NvimTreeNormal",
       },
       exclude_groups = {},
-    })
+    }
   end,
 }

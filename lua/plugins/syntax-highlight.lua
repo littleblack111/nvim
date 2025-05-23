@@ -19,7 +19,7 @@ return {
       require("tokyonight").setup(opts)
     end,
   },
-  
+
   -- Make Neovim command line a bit better
   {
     "folke/noice.nvim",
@@ -29,13 +29,13 @@ return {
       opts.cmdline = opts.cmdline or {}
       opts.messages = opts.messages or {}
       opts.popupmenu = opts.popupmenu or {}
-      
+
       opts.cmdline.view = "cmdline"
       opts.messages.view_search = false
       opts.popupmenu.enabled = true
     end,
   },
-  
+
   -- Add filetype plugin for better syntax highlighting in various file types
   {
     "nathom/filetype.nvim",
@@ -53,5 +53,5 @@ return {
         },
       },
     },
-  }
+  },
 }
