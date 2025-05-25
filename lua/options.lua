@@ -15,6 +15,7 @@ o.linebreak = true
 o.swapfile = false
 o.softtabstop = 0
 o.smarttab = false
+o.wrap = false
 
 g.lsp_document_highlight_enable = true
 g.lsp_inlay_hint_enable = true
