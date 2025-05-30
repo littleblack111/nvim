@@ -36,22 +36,4 @@ return {
     end,
   },
 
-  -- Add filetype plugin for better syntax highlighting in various file types
-  {
-    "nathom/filetype.nvim",
-    lazy = false,
-    opts = {
-      overrides = {
-        extensions = {
-          h = "cpp",
-          hpp = "cpp",
-          inl = "cpp",
-          ipp = "cpp",
-          cs = "cs",
-          go = "go",
-          rs = "rust",
-        },
-      },
-    },
-  },
 }

@@ -27,3 +27,15 @@ o.termguicolors = true
 
 vim.o.scrolloff = 5
 vim.o.sidescrolloff = 5
+
+-- vim.filetype.add({
+--   extension = {
+--     h = "cpp",
+--     hpp = "cpp",
+--     inl = "cpp",
+--     ipp = "cpp",
+--     cs = "cs",
+--     go = "go",
+--     rs = "rust",
+--   },
+-- })
