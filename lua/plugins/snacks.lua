@@ -2,7 +2,7 @@ return {
   {
     "folke/snacks.nvim",
     priority = 1000,
-    lazy = false,
+    -- lazy = false,
     opts = {
       dashboard = { enabled = true },
       indent = { enabled = true },

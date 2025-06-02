@@ -1,6 +1,6 @@
 return {
   "github/copilot.vim",
-  lazy = true,
+  -- lazy = true,
   event = "VeryLazy",
   config = function()
     -- Enable Copilot for all filetypes

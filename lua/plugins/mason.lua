@@ -1,6 +1,7 @@
 return {
   {
     "williamboman/mason.nvim",
+    cmd = "Mason",
     opts = {
       ensure_installed = {
         -- LSP servers
@@ -48,12 +49,12 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
       ensure_installed = {
         "lua_ls",
         "html",
         "cssls",
-        "tsserver",
         "pyright",
         "clangd",
         "gopls",
