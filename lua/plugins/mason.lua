@@ -21,12 +21,10 @@ return {
         "clang-format",
         "black",
         "isort",
-        "gofmt",
         "goimports",
         "google-java-format",
         "shfmt",
         "rustfmt",
-        "clang_format",
 
         -- Linters
         "eslint_d",
@@ -69,4 +67,3 @@ return {
     end,
   },
 }
-
