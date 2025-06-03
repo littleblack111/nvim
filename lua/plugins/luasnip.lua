@@ -45,6 +45,7 @@ return {
   },
   {
     "rafamadriz/friendly-snippets",
+    lazy = true,
     config = function()
       require("luasnip").filetype_extend("typescript", { "javascript" })
       require("luasnip").filetype_extend("typescriptreact", { "javascript", "typescript", "javascriptreact" })

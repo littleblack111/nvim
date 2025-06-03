@@ -22,4 +22,5 @@ return {
   { import = "plugins.kitty-scrollback" },
   { import = "plugins.inlay-hints" },
   { import = "plugins.lsp_lines" },
+  -- { import = "nvchad.blink.lazyspec" },
 }
