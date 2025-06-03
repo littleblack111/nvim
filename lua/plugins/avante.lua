@@ -4,11 +4,13 @@ return {
   -- lazy = true,
   version = false,
   opts = {
+    providers = {
+      copilot = {
+        model = "claude-3.5-sonnet",
+      },
+    },
     provider = "copilot",
     auto_suggestions_provider = "copilot",
-    copilot = {
-      model = "claude-3.5-sonnet",
-    },
     behaviour = {
       auto_suggestions = true,
     },
