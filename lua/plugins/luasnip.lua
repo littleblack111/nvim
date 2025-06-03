@@ -2,6 +2,7 @@ return {
   {
     "L3MON4D3/LuaSnip",
     dependencies = { "rafamadriz/friendly-snippets" },
+    lazy = true,
     opts = {
       history = true,
       updateevents = "TextChanged,TextChangedI",
@@ -27,7 +28,7 @@ return {
       end, { silent = true, desc = "Jump forward in snippet" })
 
       -- Use Shift-Tab to jump backward in snippets
-      vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
+      vim.keymap.set({ "i", "s" }, "<C-S-f>", function()
         if ls.jumpable(-1) then
           ls.jump(-1)
         end

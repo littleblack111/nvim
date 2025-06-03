@@ -49,7 +49,9 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile" },
+    -- event = "VeryLazy",
+    lazy = true,
     opts = {
       ensure_installed = {
         "lua_ls",
@@ -64,7 +66,7 @@ return {
       automatic_installation = true,
     },
     config = function(_, opts)
-      require("mason-lspconfig").setup(opts)
+      require("mason-lspconfig").setup()
     end,
   },
 }

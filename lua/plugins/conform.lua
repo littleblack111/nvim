@@ -1,5 +1,5 @@
 return {
   "stevearc/conform.nvim",
-  event = "BufWritePre",
+  event = "BufWritePost",
   opts = require "configs.conform",
 }
