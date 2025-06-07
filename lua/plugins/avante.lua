@@ -29,6 +29,7 @@ return {
     "ibhagwan/fzf-lua",
     "nvim-tree/nvim-web-devicons",
     "zbirenbaum/copilot.lua",
+    "ravitemer/mcphub.nvim",
     {
       "HakonHarnes/img-clip.nvim",
       event = "VeryLazy",

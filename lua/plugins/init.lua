@@ -12,6 +12,7 @@ return {
   { import = "plugins.noice" },
   { import = "plugins.git-conflict" },
   { import = "plugins.avante" },
+  { import = "plugins.mcp" },
   { import = "plugins.mini-sessions" },
   { import = "plugins.render-markdown" },
   { import = "plugins.ts-autotag" },
