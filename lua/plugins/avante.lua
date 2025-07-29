@@ -6,7 +6,7 @@ return {
   opts = {
     providers = {
       copilot = {
-        model = "claude-sonnet-4",
+        model = "gpt-4.1",
       },
     },
     provider = "copilot",

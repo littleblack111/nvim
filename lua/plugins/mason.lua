@@ -50,7 +50,6 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     event = { "BufReadPost", "BufNewFile" },
-    -- event = "VeryLazy",
     lazy = true,
     opts = {
       ensure_installed = {
@@ -62,11 +61,13 @@ return {
         "gopls",
         "jsonls",
         "yamlls",
+        "qmlls",
       },
-      automatic_installation = true,
+      automatic_enable = true,
     },
     config = function(_, opts)
-      require("mason-lspconfig").setup()
+      require("mason-lspconfig").setup(opts)
+      require("configs.lspconfig")
     end,
   },
 }
